@@ -1,0 +1,17 @@
+.
+├── Architektur.txt
+├── area.cpp
+├── area.h
+├── eis20_meta
+│   ├── all_files.txt
+│   └── used_commit
+├── main.cpp
+├── mainwindow.cpp
+├── mainwindow.h
+├── mainwindow.ui
+├── MicrohardPaint.pro
+├── MicrohardPaint.pro.user
+├── README.md
+└── Selbständigkeitserklärung.pdf
+
+1 directory, 13 files

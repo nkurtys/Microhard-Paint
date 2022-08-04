@@ -1,0 +1,13 @@
+
+*.zip
+*.pro.user
+*.o
+*.exe
+*.obj
+CMakeLists.txt.user
+cmake-build-debug
+build-*ebug
+build-*rofile
+CMakeFiles
+*erkl*
+

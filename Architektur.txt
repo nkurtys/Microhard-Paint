@@ -1,0 +1,36 @@
+Architektur
+
+Der Plan war eine Architektur aufzubauen ähnlich zu der in der Vorlesung 
+vorgestellten MVC Struktur und ähnlich der Struktur in der Qt Dokumentation[1]. 
+Das Aufteilen des User Schnittstelle, der Darstellung des Bildes und die 
+Speicherverwaltung. Dazu wollte ich die unterschiedlichen Tools von einem 
+gemeinsamen Shape Interface ableiten lassen, wie auch in der Vorlesung dargestellt.
+Jedoch haben sich verschiedene Probleme beim coden ergeben die mich Teile der Idee
+verwerfen ließen.
+Die vorliegende Architektur trennt nur Benutzerschnittstelle und Zeichnung/Dokumentvewaltung.
+Die Shape Klassen wurden nicht implementiert, da die von QtPainter bereitgestellten Klassen 
+QPolygon, QRect und QVector und deren Funktionen einfacher zu implementieren waren. 
+Jedoch leitet QRect nicht von QVector ab, was die Speicherverwaltung verkomplizierte.
+Leider leidet die Übersichtlichkeit des Codes darunter. Hätte ich mehr Zeit würde ich es
+noch einmal mit der Shape Idee versuchen und die Filespeicherung von dem Zeichenbereich 
+abkapseln.
+Zum Abgabezeitpunkt besteht das Programm aus dem MainWindow(QMainWindow) und dem 
+Zeichenbereich Area(QWidget). Die Funktionen createActions und createMenus sind 
+dafür verantwortlich die Aktione zu kreieren und zum Menü hinzuzufügen.
+Desweiteren wurde die AreYouSure Funktion hinzugefügt um Speicher und Close events 
+abzufangen falls die Arbeitsfläche verändert wurde.
+Die Area Klasse hält die Vektoren für die Speicherverwaltung sowie deren Funktionen 
+zum lesen und schreiben aus der Datei. Die MouseMovement Funktionen wurden aus der 
+QWidget Klasse überschrieben, um die Vorschau der Zeichnungen darzustellen. Jedes 
+Objekt wird in einem der Vektoren gespeichert. Die Vielecke in polyContainer, Quadrate
+und Rechtecke in rectContainer und für den Text wurde ein Vektor für die Position des 
+Textes verwendet sowie ein Vektor für den Inhalt. Hier zeigt sich deutlich wie viel 
+Vorteilhafter es gewesen wäre eine Oberklasse Shape zu haben, von denen alle weiteren 
+Objekte ableiten da so nur ein Vektor von nöten gewesen wäre. Das Einlesen in eine Datei 
+verfolgt ein simples Prinzip: Art, Anzahl, Inhalt des Objekts, wobei die Koordinaten der 
+Objekte ins Dokument geladen werden. Hätte man den OOP Ansatz verfolgt so hätte man den 
+code auf Shape->writeToFile und ->readFromFile begrenzen können. Hier ist alles in einer Funktion.
+
+Grundsätzlich Funktioniert das Program wie es sollte, es wurde keine Zoom Funktion oder Drag
+Funktion implementiert. Die Speicher Funktion Funktioniert auch, nur habe ich die Open Fonktion
+und damit das lesen von dem Dokument nicht hinbekommen, da ich meinen Fehler nicht finden kann.
